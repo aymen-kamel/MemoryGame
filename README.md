@@ -32,3 +32,11 @@
 2. **Run locally**:
 ```bash
 mvn tomcat7:run
+src/
+├── main/
+│   ├── java/com/memorygame/
+│   │   ├── Card.java          # Card model
+│   │   └── MemoryGameServlet.java # Game logic
+│   ├── webapp/
+│   │   ├── game.jsp           # Main game UI
+│   │   └── WEB-INF/web.xml    # Servlet config
