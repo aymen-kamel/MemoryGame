@@ -1,0 +1,86 @@
+/* Urban Style for the homepage */
+.index-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    font-family: 'Urbanist', 'Bebas Neue', 'Arial Narrow', sans-serif;
+    overflow: hidden;
+}
+
+/* Optional graffiti-style background pattern */
+.index-page::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 100, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(0, 200, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 30% 60%, rgba(255, 255, 0, 0.05) 0%, transparent 20%);
+    z-index: 0;
+}
+
+.container {
+    text-align: center;
+    background: rgba(10, 10, 20, 0.9);
+    padding: 40px 50px;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
+    border-left: 3px solid #ff3366;
+    border-right: 3px solid #00ccff;
+    transform: skewX(-2deg);
+}
+
+.container h1 {
+    color: #fff;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px #ff3366, 
+                -2px -2px 0px #00ccff;
+}
+
+.start-button {
+    background: linear-gradient(45deg, #ff3366 0%, #00ccff 100%);
+    color: white;
+    border: none;
+    padding: 16px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-bottom: 3px solid #fff;
+}
+
+.start-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(45deg, #00ccff 0%, #ff3366 100%);
+}
+
+.start-button:active {
+    transform: translateY(1px);
+}
+
+/* Optional urban decoration elements */
+.container::after {
+    content: "×";
+    position: absolute;
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 10rem;
+    right: 20px;
+    top: -30px;
+    z-index: -1;
+    font-weight: bold;
+}

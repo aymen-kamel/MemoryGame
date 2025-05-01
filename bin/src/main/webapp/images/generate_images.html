@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Memory Game Cards</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: 10px;
+        }
+        body {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Colors for different cards
+        const colors = [
+            '#FF0000', '#00FF00', '#0000FF', '#FFFF00',
+            '#FF00FF', '#00FFFF', '#FFA500', '#800080'
+        ];
+
+        // Generate card images
+        function generateCards() {
+            // Generate front cards
+            colors.forEach((color, index) => {
+                const canvas = document.createElement('canvas');
+                canvas.width = 120;
+                canvas.height = 120;
+                const ctx = canvas.getContext('2d');
+                
+                // Draw colored circle
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.arc(60, 60, 40, 0, Math.PI * 2);
+                ctx.fill();
+                
+                // Add number
+                ctx.fillStyle = 'white';
+                ctx.font = 'bold 24px Arial';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText((index + 1).toString(), 60, 60);
+                
+                // Convert to image and download
+                const link = document.createElement('a');
+                link.download = `carte${index + 1}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+
+            // Generate back card
+            const backCanvas = document.createElement('canvas');
+            backCanvas.width = 120;
+            backCanvas.height = 120;
+            const backCtx = backCanvas.getContext('2d');
+            
+            // Draw pattern
+            backCtx.fillStyle = '#333333';
+            backCtx.fillRect(0, 0, 120, 120);
+            
+            backCtx.strokeStyle = '#FFFFFF';
+            backCtx.lineWidth = 2;
+            for(let i = 0; i < 120; i += 20) {
+                backCtx.beginPath();
+                backCtx.moveTo(i, 0);
+                backCtx.lineTo(120, i);
+                backCtx.stroke();
+                
+                backCtx.beginPath();
+                backCtx.moveTo(0, i);
+                backCtx.lineTo(i, 120);
+                backCtx.stroke();
+            }
+            
+            // Add text
+            backCtx.fillStyle = '#FFFFFF';
+            backCtx.font = 'bold 20px Arial';
+            backCtx.textAlign = 'center';
+            backCtx.textBaseline = 'middle';
+            backCtx.fillText('MEMORY', 60, 60);
+            
+            // Download back card
+            const backLink = document.createElement('a');
+            backLink.download = 'back.png';
+            backLink.href = backCanvas.toDataURL('image/png');
+            backLink.click();
+        }
+
+        // Run when page loads
+        window.onload = generateCards;
+    </script>
+</body>
+</html> 
